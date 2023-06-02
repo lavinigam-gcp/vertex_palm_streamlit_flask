@@ -3,7 +3,7 @@ from vertexai.preview.language_models import ChatModel, InputOutputTextPair, Cha
 import vertexai
 from streamlit_chat import message
 
-PROJECT_ID = ""
+PROJECT_ID = "cloud-llm-preview1"
 vertexai.init(project=PROJECT_ID, location="us-central1")
 
 def create_session(temperature=0.2,
