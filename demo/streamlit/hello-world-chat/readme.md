@@ -29,7 +29,10 @@ Step 6(a): To run streamlit:
 
 Step 7: Enjoy the API
 
+Here are some screenshots of the app: 
 
+This is a full view:
 ![app shot full](/demo/streamlit/hello-world-chat/image/app_shot_02.png)
+
+This is the chat window
 ![app shot full2](/demo/streamlit/hello-world-chat/image/app_shot_03.png)
-![app shot full3](/demo/streamlit/hello-world-chat/image/app_shot_04.png)
