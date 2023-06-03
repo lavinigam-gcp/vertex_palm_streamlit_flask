@@ -2,8 +2,8 @@ import streamlit as st
 from vertexai.preview.language_models import ChatModel, InputOutputTextPair, ChatSession, TextGenerationModel
 import vertexai
 from PIL import Image
-from utils import *
-from vertex import *
+from src.utils import *
+from src.vertex import *
 from streamlit_chat import message
 
 
