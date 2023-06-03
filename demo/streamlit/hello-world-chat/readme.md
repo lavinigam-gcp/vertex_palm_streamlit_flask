@@ -30,6 +30,6 @@ Step 6(a): To run streamlit:
 Step 7: Enjoy the API
 
 
-![app shot full](/image/app_shot_02.png)
-![app shot full2](/image/app_shot_03.png)
-![app shot full3](/image/app_shot_04.png)
+![app shot full](/demo/streamlit/hello-world-chat/image/app_shot_02.png)
+![app shot full2](/demo/streamlit/hello-world-chat/image/app_shot_03.png)
+![app shot full3](/demo/streamlit/hello-world-chat/image/app_shot_04.png)
