@@ -22,6 +22,7 @@ def reset_session() -> None:
     st.session_state['chunk_size'] = 500
     st.session_state['sample_bool'] = True
     st.session_state['sample_value'] = 10
+    st.session_state['top_sort_value'] = 5
 
 
 def hard_reset_session() -> None: 
@@ -53,6 +54,9 @@ def create_session_state():
         st.session_state['sample_bool'] = True
     if 'sample_value' not in st.session_state:
         st.session_state['sample_value'] = 10
+    if 'top_sort_value' not in st.session_state:
+        st.session_state['top_sort_value'] = 5
+
 
     
 def create_data_packet(file_name, file_type, page_number, file_content):
@@ -111,14 +115,19 @@ def read_documents(documents,chunk_size_value=2000, sample=True, sample_size=10)
                         )
 
                         final_data.append(packet)
-            else:
+            elif file_type == ".txt":
                 # loading other file types
-                text = textract.process(eachdoc).decode("utf-8")
+                # st.write(eachdoc)
+                text = eachdoc.read().decode("utf-8")
+                # text = textract.process(bytes_data).decode("utf-8")
                 packet = create_data_packet(
                     file_name, file_type, page_number=-1, file_content=text
                 )
                 final_data.append(packet)
+        
+        # st.write(final_data)
         pdf_data = pd.DataFrame.from_dict(final_data)
+        # st.write(pdf_data)
         pdf_data = pdf_data.sort_values(
             by=["file_name", "page_number"]
         )  # sorting the datafram by filename and page_number
@@ -169,10 +178,10 @@ def get_context_from_question(question, vector_store, sort_index_value=2):
         .index
     )
     top_matched_df = vector_store[vector_store.index.isin(top_matched)][
-        ["file_name", "page_number", "content"]
+        ["file_name", "page_number", "content","chunks"]
     ]
     context = "\n".join(
-        vector_store[vector_store.index.isin(top_matched)]["context_json"].values
+        vector_store[vector_store.index.isin(top_matched)]["chunks"].values
     )
     source = f"""filenames: {",".join(top_matched_df['file_name'].value_counts().index) },
               pages: {top_matched_df['page_number'].unique()}
