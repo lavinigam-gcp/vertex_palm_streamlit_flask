@@ -29,7 +29,7 @@ create_session_state()
 image = Image.open('/Users/lavinigam/Documents/office-work/LLM/vertex_palm_streamlit_flask/demo/streamlit/hello-world-text/image/palm.jpg')
 st.image(image)
 st.title(":red[QA Bot] :blue[with PaLM API] on :green[documents]")
-
+st.markdown("<h5 style='text-align: center; color: darkblue;'>Engine: Native python implementation of vectore store and text-bison@001.</h5>", unsafe_allow_html=True)
 @st.cache_data
 def cache_vector_store(data):
     vector_store = data.copy()
@@ -87,7 +87,7 @@ with st.container():
             context, top_matched_df, source = get_context_from_question(
                 question,
                 vector_store=st.session_state['vector_store'],
-                sort_index_value=2,  # Top N results to pick from embedding vector search
+                sort_index_value=st.session_state['top_sort_value'],  # Top N results to pick from embedding vector search
             )
             prompt = f""" Answer the question as precise as possible using the provided context. \n\n
                     Context: \n {context}?\n
