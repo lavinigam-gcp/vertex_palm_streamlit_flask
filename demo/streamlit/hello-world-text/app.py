@@ -1,5 +1,5 @@
 import streamlit as st
-from vertexai.preview.language_models import ChatModel, InputOutputTextPair, ChatSession, TextGenerationModel
+from vertexai.preview.language_models import TextGenerationModel
 import vertexai
 from PIL import Image
 from src.utils import *
