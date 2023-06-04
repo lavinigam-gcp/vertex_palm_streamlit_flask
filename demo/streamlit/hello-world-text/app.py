@@ -25,12 +25,12 @@ create_session_state()
 
 
 
-image = Image.open('/Users/lavinigam/Documents/office-work/LLM/vertex_palm_streamlit_flask/demo/streamlit/hello-world-text/image/palm.jpg')
+image = Image.open('/demo/streamlit/hello-world-text/image/palm.jpg')
 st.image(image)
 st.title(":red[PaLM 2] :blue[Vertex AI] Text Generation")
 
 with st.sidebar:
-    image = Image.open('/Users/lavinigam/Documents/office-work/LLM/vertex_palm_streamlit_flask/demo/streamlit/hello-world-text/image/sidebar_image.jpg')
+    image = Image.open('/demo/streamlit/hello-world-text/image/sidebar_image.jpg')
     st.image(image)
     st.markdown("<h2 style='text-align: center; color: red;'>Setting Tab</h2>", unsafe_allow_html=True)
 

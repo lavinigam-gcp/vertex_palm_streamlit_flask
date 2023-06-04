@@ -10,6 +10,8 @@ from src.vertex import *
 import numpy as np
 
 def reset_session() -> None:
+    """_summary_: Resets the session state to default values.
+    """
     st.session_state['temperature'] = 0.0
     st.session_state['token_limit'] = 256
     st.session_state['top_k'] = 40
@@ -30,6 +32,9 @@ def hard_reset_session() -> None:
 
 
 def create_session_state():
+    """
+    Creating session states for the app.
+    """
     if 'temperature' not in st.session_state:
         st.session_state['temperature'] = 0.0
     if 'token_limit' not in st.session_state:
@@ -94,12 +99,33 @@ def get_chunks_iter(text, maxlength):
 # function to apply "get_chunks_iter" function on each row of dataframe.
 # currently each row here for file_type=pdf is content of each page and for other file_type its the whole document.
 def split_text(row):
+    """_summary_: Splits the text into chunks of given size.
+
+    Args:
+        row (_type_): each row of the pandas dataframe through apply function.
+
+    Returns:
+        _type_: list of chunks of text.
+    """
     chunk_iter = get_chunks_iter(row, chunk_size)
     return chunk_iter
 
 
 @st.cache_data
 def read_documents(documents,chunk_size_value=2000, sample=True, sample_size=10):
+    """_summary_: Reads the documents and creates a pandas dataframe with all the content and metadata.
+    cleaning the text and splitting the text into chunks of given size. creating a vector store of the chunks.
+
+    Args:
+        documents (_type_): list of documents uploaded by the user.
+        chunk_size_value (_type_, optional): size of each chunk. Defaults to 2000.
+        sample (bool, optional): whether to create a sample vector store or not. Defaults to True.
+        sample_size (int, optional): size of the sample vector store. Defaults to 10.
+
+    Returns:
+        _type_: pandas dataframe with all the content and metadata.
+    
+    """
     final_data = []
     with st.spinner('Loading documents and putting them in pandas dataframe.....'):
         for eachdoc in documents:

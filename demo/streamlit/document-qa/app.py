@@ -26,10 +26,10 @@ create_session_state()
 
 
 
-image = Image.open('/Users/lavinigam/Documents/office-work/LLM/vertex_palm_streamlit_flask/demo/streamlit/hello-world-text/image/palm.jpg')
+image = Image.open('/demo/streamlit/hello-world-text/image/palm.jpg')
 st.image(image)
 st.title(":red[QA Bot] :blue[with PaLM API] on :green[documents]")
-st.markdown("<h5 style='text-align: center; color: darkblue;'>Engine: Native python implementation of vectore store and text-bison@001.</h5>", unsafe_allow_html=True)
+st.markdown("<h5 style='text-align: center; color: darkblue;'>Engine: Native python implementation of vector store and text-bison@001.</h5>", unsafe_allow_html=True)
 @st.cache_data
 def cache_vector_store(data):
     vector_store = data.copy()
@@ -73,12 +73,6 @@ with st.sidebar:
         reset_session()
 
 with st.container():
-    # st.write(st.session_state['data_processing'])
-    # if st.session_state['data_processing']:
-    #     st.write("Here's the vector store:")
-    #     st.dataframe(final_data)
-    #     # st.session_state['data_processing'] = False
-
     if not st.session_state['vector_store'].empty:
         # st.write(st.session_state['vector_store'])
         question = st.text_input('What would you like to ask the documents?')
