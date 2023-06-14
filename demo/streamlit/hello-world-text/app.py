@@ -25,12 +25,12 @@ create_session_state()
 
 
 
-image = Image.open('/demo/streamlit/hello-world-text/image/palm.jpg')
+image = Image.open('./image/palm.jpg')
 st.image(image)
 st.title(":red[PaLM 2] :blue[Vertex AI] Text Generation")
 
 with st.sidebar:
-    image = Image.open('/demo/streamlit/hello-world-text/image/sidebar_image.jpg')
+    image = Image.open('./image/sidebar_image.jpg')
     st.image(image)
     st.markdown("<h2 style='text-align: center; color: red;'>Setting Tab</h2>", unsafe_allow_html=True)
 
@@ -74,7 +74,7 @@ with st.container():
         with st.spinner('PaLM is working to generate, wait.....'):
             response = get_text_generation(prompt=prompt, temperature = st.session_state['temperature'],
                                 max_output_tokens = st.session_state['token_limit'], 
-                                top_p = st.session_state['top_k'],
-                                top_k = st.session_state['top_p'])
+                                top_p = st.session_state['top_p'],
+                                top_k = st.session_state['top_k'])
             st.session_state['response'].append(response)
             st.markdown(response)
