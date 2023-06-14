@@ -15,9 +15,9 @@ st.set_page_config(
     layout="centered",
     initial_sidebar_state="expanded",
     menu_items={
-        'Get Help': 'https://www.extremelycoolapp.com/help',
+        'Get Help': 'https://cloud.google.com/vertex-ai/docs/generative-ai/learn/overview',
         'Report a bug': "https://www.extremelycoolapp.com/bug",
-        'About': "# This app shows you how to use Vertex PaLM Text Generator API"
+        'About': "# This app shows you how to use Vertex PaLM Text Generator API on your custom documents"
     }
 )
 
@@ -26,7 +26,7 @@ create_session_state()
 
 
 
-image = Image.open('/demo/streamlit/hello-world-text/image/palm.jpg')
+image = Image.open('./image/palm.jpg')
 st.image(image)
 st.title(":red[QA Bot] :blue[with PaLM API] on :green[documents]")
 st.markdown("<h5 style='text-align: center; color: darkblue;'>Engine: Native python implementation of vector store and text-bison@001.</h5>", unsafe_allow_html=True)
@@ -55,7 +55,7 @@ with st.sidebar:
     if not st.session_state['process_doc']:
         if st.button("Process"):
             st.session_state['process_doc'] = True
-            with st.spinner("Processing"):
+            with st.spinner("Processing...this will take time..."):
                 final_data = read_documents(user_docs,
                                             chunk_size_value=st.session_state['chunk_size'],
                                             sample=st.session_state['sample_bool'],

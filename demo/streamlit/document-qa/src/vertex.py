@@ -3,7 +3,7 @@ import vertexai
 import streamlit as st
 from tenacity import retry, stop_after_attempt, wait_random_exponential
 
-PROJECT_ID = "cloud-llm-preview1"
+PROJECT_ID = ""
 vertexai.init(project=PROJECT_ID, location="us-central1")
 
 
